@@ -4,6 +4,16 @@ import { HomePageComponent } from './home-page/home-page.component';
 
 export const routes: Routes = [
     { path: '', pathMatch: 'full', component: HomePageComponent },
+    {
+        path: 'my-recipies',
+        loadComponent: async () =>
+          (await import('./my-recipies/my-recipies.component')).MyRecipiesComponent,
+    },
+    {
+        path: 'selection',
+        loadComponent: async () =>
+          (await import('./selection-recipies/selection-recipies.component')).SelectionRecipiesComponent,
+    },
     { path: '**', redirectTo: '' },
 ];
 

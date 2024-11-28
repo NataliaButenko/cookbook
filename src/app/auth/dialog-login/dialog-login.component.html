@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Login</h2>
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="form">
+    <mat-dialog-content class="content">
+        <mat-form-field class="field">
+          <mat-label>Nick name</mat-label>
+          <input matInput formControlName="nickname" required />
+          @if(loginForm.get('nickname')?.hasError('required')) {
+            <mat-error>Nick name is required</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="field">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" required  />
+          @if(loginForm.get('password')?.hasError('required')) {
+            <mat-error>Password is required</mat-error>
+          }
+          @if(loginForm.get('password')?.hasError('minlength')) {
+            <mat-error>The password must be at least 6 characters long</mat-error>
+          }
+        </mat-form-field>
+        @if(loginError) {
+            <mat-error align="center">Login error. If you don't have an account please registration or try again</mat-error>
+        }
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button mat-button type="submit" [disabled]="loginForm.invalid">Login</button>
+      </mat-dialog-actions>
+</form>
+

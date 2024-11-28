@@ -1,0 +1,59 @@
+<h2 mat-dialog-title>Registration</h2>
+<form [formGroup]="registrationForm" (ngSubmit)="registration()" class="form">
+    <mat-dialog-content class="content">
+        <mat-form-field class="field">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" required />
+            @if(registrationForm.get('name')?.hasError('required')) {
+                <mat-error>Name is required</mat-error>
+            }
+          </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Nick name</mat-label>
+            <input matInput formControlName="nickname" required />
+            @if(registrationForm.get('nickname')?.hasError('required')) {
+                <mat-error>Nick name is required</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required />
+            @if(registrationForm.get('email')?.hasError('required')) {
+                <mat-error>Email is required</mat-error>
+            }
+            @if(registrationForm.get('email')?.hasError('email')) {
+                <mat-error>Invalid format</mat-error>
+            }  
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" required  />
+            @if(registrationForm.get('password')?.hasError('required')) {
+                <mat-error>Password is required</mat-error>
+            }
+            @if(registrationForm.get('password')?.hasError('minlength')) {
+                <mat-error>The password must be at least 6 characters long</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Confirm password</mat-label>
+            <input matInput type="password" formControlName="confirmPassword" required />
+            @if(registrationForm.get('confirmPassword')?.hasError('passwordMismatch')) {
+                <mat-error>Passwords do not match</mat-error>
+            }
+            @if(registrationForm.get('confirmPassword')?.hasError('required')) {
+                <mat-error>Confirm password is required</mat-error>
+            }
+            @if(registrationForm.get('confirmPassword')?.hasError('minlength')) {
+                <mat-error>The confirm password must be at least 6 characters long</mat-error>
+            } 
+        </mat-form-field>
+        @if(errorMessage) {
+            <mat-error align="center">{{errorMessage}}</mat-error>
+        }
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button mat-button type="submit" [disabled]="registrationForm.invalid">Registration</button>
+      </mat-dialog-actions>
+</form>
