@@ -7,8 +7,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { last } from 'rxjs';
-import { AppRoutingModule } from '../app.routes';
 import { AuthService } from '../auth/auth.service';
 import { IUser } from '../shared/interfaces';
 import { MatMenuModule } from '@angular/material/menu';
@@ -16,6 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogLoginComponent } from '../auth/dialog-login/dialog-login.component';
 import { DialogConfirmComponent } from '../components/dialog-confirm/dialog-confirm.component';
 import { DialogRegistrationComponent } from '../auth/dialog-registration/dialog-registration.component';
+import { FooterComponent } from './footer/footer.component';
 
 @Component({
   selector: 'app-layout',
@@ -27,7 +26,10 @@ import { DialogRegistrationComponent } from '../auth/dialog-registration/dialog-
     MatTabsModule,
     CommonModule,
     RouterModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSidenavModule,
+    MatListModule,
+    FooterComponent
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'

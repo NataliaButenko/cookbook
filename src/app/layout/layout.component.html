@@ -1,50 +1,61 @@
-<header>
-  <mat-toolbar class="toolbar">
-    <mat-toolbar-row>
-      @if(isAuth &&  currentUser?.isAdmin) {
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-          <mat-icon>menu</mat-icon>
-        </button>
-      }
-      <div class="spacer">
-        <nav mat-tab-nav-bar mat-stretch-tabs="false" mat-align-tabs="center" [tabPanel]="tabPanel">
-          @for (link of links; track link) {
-            @if(link.visible) {
-              <a mat-tab-link [routerLink]="link.link" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">{{link.label}}</a>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="over" [(opened)]="opened" class="sidenav" >
+    <div class="side-head">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <mat-nav-list class="nav-list">
+      <a mat-list-item routerLink="/users" routerLinkActive="active" (click)="sidenav.toggle()">Users</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <header>
+    <mat-toolbar class="toolbar">
+      <mat-toolbar-row>
+        @if(isAuth &&  currentUser?.isAdmin) {
+          <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        }
+        <div class="spacer">
+          <nav mat-tab-nav-bar mat-stretch-tabs="false" mat-align-tabs="center" [tabPanel]="tabPanel">
+            @for (link of links; track link) {
+              @if(link.visible) {
+                <a mat-tab-link [routerLink]="link.link" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">{{link.label}}</a>
+              }
             }
-          }
-        </nav>
-      </div>
-      @if(isAuth && currentUser) {
-        <div class="user" [matMenuTriggerFor]="menuLogout">
-          {{currentUser.name[0].toUpperCase()}}
+          </nav>
         </div>
-      } @else {
-        <button mat-icon-button [matMenuTriggerFor]="menuLogin" aria-modal="true">
-          <mat-icon class="example-icon">person</mat-icon>
-        </button>
-      } 
-      <mat-menu #menuLogin="matMenu">
-        <button mat-menu-item (click)="openDialogLogin()">
-          <span>Login</span>
-        </button>
-        <button mat-menu-item (click)="openDialogRegistration()">
-          <span>Registration</span>
-        </button>
-      </mat-menu>
-      <mat-menu #menuLogout="matMenu" >
-        <button mat-menu-item (click)="logout()">
-          <span>Logout</span>
-        </button>
-      </mat-menu>
-    </mat-toolbar-row>
-  </mat-toolbar>
-</header>
-<main class="content">
-  <mat-tab-nav-panel #tabPanel>
-    <router-outlet></router-outlet>
-  </mat-tab-nav-panel>
-</main>
-<footer>
-    Footer
-</footer>
+        @if(isAuth && currentUser) {
+          <div class="user" [matMenuTriggerFor]="menuLogout">
+            {{currentUser.name[0].toUpperCase()}}
+          </div>
+        } @else {
+          <button mat-icon-button [matMenuTriggerFor]="menuLogin" aria-modal="true">
+            <mat-icon class="example-icon">person</mat-icon>
+          </button>
+        } 
+        <mat-menu #menuLogin="matMenu">
+          <button mat-menu-item (click)="openDialogLogin()">
+            <span>Login</span>
+          </button>
+          <button mat-menu-item (click)="openDialogRegistration()">
+            <span>Registration</span>
+          </button>
+        </mat-menu>
+        <mat-menu #menuLogout="matMenu" >
+          <button mat-menu-item (click)="logout()">
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </header>
+  <main class="content">
+    <mat-tab-nav-panel #tabPanel>
+      <router-outlet></router-outlet>
+    </mat-tab-nav-panel>
+  </main>
+  <ui-footer></ui-footer>
+</mat-sidenav-container>

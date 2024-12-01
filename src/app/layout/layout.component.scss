@@ -27,3 +27,22 @@
     max-width: 1200px;
     margin: 64px auto;
 }
+
+.mat-drawer-container {
+    background-color: transparent;
+}
+
+.sidenav-container {
+	height: 100%;
+}
+
+.sidenav {
+  width: 250px;
+
+  .side-head {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+  }
+}
