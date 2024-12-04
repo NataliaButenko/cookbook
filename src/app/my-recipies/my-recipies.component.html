@@ -1,1 +1,26 @@
-<p>my-recipies works!</p>
+<div >
+    Create recipe form
+</div>
+<mat-divider></mat-divider>
+<h1>All my recipes</h1>
+<div class="wrap">
+    @for( item of recipes; track item.id) {
+        <!-- <p>{{item | json}}</p> -->
+        <mat-card class="example-card" appearance="outlined">
+            <mat-card-header>
+              <!-- <div mat-card-avatar class="example-header-image"></div> -->
+              <mat-card-title>{{item.name}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="item.imageUrl ? item.imageUrl : 'https://www.foodservicerewards.com/cdn/shop/t/262/assets/fsr-placeholder.png?v=45093109498714503231652397781'" alt="Photo">
+            <mat-card-content>
+              <p>
+                {{item.descriprion}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions align="end">
+              <button mat-button>LIKE</button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions>
+          </mat-card>
+    }
+</div>

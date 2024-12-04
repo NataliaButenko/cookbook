@@ -15,6 +15,7 @@ import { DialogLoginComponent } from '../auth/dialog-login/dialog-login.componen
 import { DialogConfirmComponent } from '../components/dialog-confirm/dialog-confirm.component';
 import { DialogRegistrationComponent } from '../auth/dialog-registration/dialog-registration.component';
 import { FooterComponent } from './footer/footer.component';
+import { RecipesService } from '../services/recipes.service';
 
 @Component({
   selector: 'app-layout',
@@ -43,11 +44,12 @@ export class LayoutComponent implements OnInit {
 
   readonly dialog = inject(MatDialog);
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService, private recipesService: RecipesService){}
 
   ngOnInit(): void {
+    this.recipesService.getAllRecipes(); //init array of mock data recipes;
     this.authService.isAuth$.subscribe((isAuth) => {
-      console.log("isAuth", isAuth);
+      // console.log("isAuth", isAuth);
       this.isAuth = isAuth;
       this.links = this.links.map((item) => {
         if(item.link === '/my-recipies') {
@@ -58,7 +60,7 @@ export class LayoutComponent implements OnInit {
     });
 
     this.authService.currentUser$.subscribe((cUser) => {
-      console.log("currentUser", cUser);
+      // console.log("currentUser", cUser);
       this.currentUser = cUser
     })
   }

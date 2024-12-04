@@ -7,10 +7,19 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { IUserBase } from '../shared/interfaces';
 import { UsersService } from './users.service';
 import { CommonModule } from '@angular/common';
+import { LoaderComponent } from '../components/loader/loader.component';
 
 @Component({
   selector: 'app-users',
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, CommonModule],
+  imports: [
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatTableModule, 
+    MatSortModule, 
+    MatPaginatorModule, 
+    CommonModule,
+    LoaderComponent,
+  ],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss'
 })
@@ -55,4 +64,4 @@ export class UsersComponent implements OnInit {
   }
 }
 
-//Loader доработать, свитчер админов, переход на рецепты юзера, (редактирование юзера) 
+// свитчер админов, переход на рецепты юзера, (редактирование юзера) 
