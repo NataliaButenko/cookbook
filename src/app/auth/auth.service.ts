@@ -24,7 +24,6 @@ export class AuthService {
 
   public login(value: {nickname: string, password: string}): Observable<IUser> {
     return new Observable((observer) => {
-      console.log("usersList", usersList);
       let findUser = usersList.find((item) => item.nickName === value.nickname);
       if(findUser) {
         let valueUser = JSON.stringify(findUser);

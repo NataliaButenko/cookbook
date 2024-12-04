@@ -31,4 +31,18 @@ export const usersList: IUser[] = [
         email: 'user2@gmail.com',
         isAdmin: false 
     }
+    ,
+    {
+        name: 'User3',
+        nickName: 'us3',
+        email: 'user3@gmail.com',
+        isAdmin: false 
+    }
+    ,
+    {
+        name: 'User4',
+        nickName: 'us4',
+        email: 'user4@gmail.com',
+        isAdmin: false 
+    }
 ]

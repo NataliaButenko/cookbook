@@ -25,7 +25,8 @@
     padding: 16px;
     height: 100%;
     max-width: 1200px;
-    margin: 64px auto;
+    margin: 0 auto;
+    padding: 64px 0;
 }
 
 .mat-drawer-container {
@@ -34,6 +35,8 @@
 
 .sidenav-container {
 	height: 100%;
+    display: grid;
+    grid-column: auto;
 }
 
 .sidenav {
@@ -45,4 +48,9 @@
     align-items: center;
     padding: 0 16px;
   }
+}
+
+header {
+    position: absolute;
+    z-index: 1000;
 }

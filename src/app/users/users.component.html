@@ -1,1 +1,55 @@
-<p>users works!</p>
+<section class="example-container mat-elevation-z8" tabindex="0">
+    <div class="table-head">
+        <h1>Users</h1>
+        <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" #input>
+        </mat-form-field>
+    </div>
+    @if(loading) {
+        <p>Loading...</p>
+    } @else {
+        @if(dataSource) {
+            <table mat-table [dataSource]="dataSource" matSort>
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                    <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="nickName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nick name </th>
+                    <td mat-cell *matCellDef="let row"> {{row.nickName}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                    <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="isAdmin">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Admin </th>
+                    <td mat-cell *matCellDef="let row"> {{row.isAdmin}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="created">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Created </th>
+                    <td mat-cell *matCellDef="let row"> {{row.created | date:'medium' }} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="recipesCount">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Count of recipes </th>
+                    <td mat-cell *matCellDef="let row"> {{row.recipesCount}} </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                </tr>
+
+            </table>
+        }
+    }
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" [class.hidden]="loading"></mat-paginator>
+</section>

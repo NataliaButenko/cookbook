@@ -4,3 +4,12 @@ export interface IUser {
     email: string;
     isAdmin?: boolean;
 }
+
+export interface IUserBase {
+    name: string;
+    nickName: string;
+    email: string;
+    isAdmin?: boolean;
+    created: Date;
+    recipesCount: number;
+}
