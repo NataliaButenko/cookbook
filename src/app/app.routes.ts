@@ -11,6 +11,11 @@ export const routes: Routes = [
           (await import('./my-recipies/my-recipies.component')).MyRecipiesComponent,
     },
     {
+      path: 'recipies/:id',
+      loadComponent: async () =>
+        (await import('./recipe-detail/recipe-detail.component')).RecipeDetailComponent,
+    },
+    {
         path: 'selection',
         loadComponent: async () =>
           (await import('./selection-recipies/selection-recipies.component')).SelectionRecipiesComponent,

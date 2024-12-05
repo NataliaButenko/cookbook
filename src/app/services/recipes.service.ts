@@ -39,13 +39,15 @@ export class RecipesService extends AbstractService {
     this.recipesSubject.next(newRecipes);
   }
 
-  // getRecipesByOwner(owner: string): IRecipe[] {
-  //   const allRecipes = this.recipesSubject.getValue();
-  //   return allRecipes.filter((recipe) => recipe.owner === owner);
-  // }
   getRecipesByOwner$(owner: string): Observable<IRecipe[]> {
     return this.recipesSubject.asObservable().pipe(
       map((recipes) => recipes.filter((recipe) => recipe.owner === owner))
+    );
+  }
+
+  getRecipeById$(id: number): Observable<IRecipe | undefined> {
+    return this.recipesSubject.asObservable().pipe(
+      map((recipes) => recipes.find((recipe) => recipe.id === id))
     );
   }
 }

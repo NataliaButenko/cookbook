@@ -4,6 +4,28 @@
     img {
         height: 300px;
     }
+
+    .content {
+        flex: 1;
+
+        .eco {
+            color: rgb(1 109 51);
+        }
+    }
+
+    .card-header {
+        justify-content: space-between;
+
+        .favorite-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            .favorite {
+                color: #ba005d;
+            }
+        }
+    }
 }
 
 .example-header-image {

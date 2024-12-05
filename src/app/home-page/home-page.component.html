@@ -1,28 +1,41 @@
-<p>home-page works!</p>
 <div>
-    Block with general text
+    <h1>
+        All public recipies
+    </h1>
 </div>
-<!-- tag of tags; track tag; -->
 <div class="wrap">
     @for( item of recipes; track item.id) {
-        <!-- <p>{{item | json}}</p> -->
         <mat-card class="example-card" appearance="outlined">
-            <mat-card-header>
-              <!-- <div mat-card-avatar class="example-header-image"></div> -->
-              <mat-card-title>{{item.name}}</mat-card-title>
-              <mat-card-subtitle>{{item.owner}}</mat-card-subtitle>
+            <mat-card-header class="card-header">
+                <mat-card-title>{{item.name | textEllepses:30}}</mat-card-title>
+                <mat-card-subtitle>{{item.owner}}</mat-card-subtitle>
+                @if(getRatinAvarage(item.ratings)) {
+                    <div class="favorite-wrap">
+                        <mat-icon aria-hidden="false" fontIcon="favorite" class="favorite"></mat-icon>
+                        {{getRatinAvarage(item.ratings)}}
+                    </div>
+                }
             </mat-card-header>
             <img mat-card-image [src]="item.imageUrl ? item.imageUrl : 'https://www.foodservicerewards.com/cdn/shop/t/262/assets/fsr-placeholder.png?v=45093109498714503231652397781'" alt="Photo">
-            <mat-card-content>
-              <p>
-                {{item.descriprion}}
-              </p>
+            <mat-card-content class="content">
+                <p>
+                    {{item.descriprion | textEllepses}}
+                </p>
+                <mat-chip-set aria-label="Fish selection">
+                    @if(item.isVegan) {
+                        <mat-icon aria-hidden="false" fontIcon="eco" class="eco"  matTooltip="Vegan food"></mat-icon>
+                    }
+                    @if(item.tags) {
+                        @for( tag of item.tags; track tag) {
+                            <mat-chip disabled> {{tag}}</mat-chip>
+                        }
+                    }
+                  </mat-chip-set>
             </mat-card-content>
             <mat-card-actions align="end">
-              <button mat-button>LIKE</button>
-              <button mat-button>SHARE</button>
+                <a mat-button [routerLink]="['/recipies', item.id]">Show more</a>
             </mat-card-actions>
-          </mat-card>
+        </mat-card>
     }
 </div>
 

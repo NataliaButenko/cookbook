@@ -17,7 +17,8 @@ export const recipesList: IRecipe[] = [
       private: false,
       kkal: 583,
       ratings: [4, 5, 1, 4, 5, 1, 3, 1, 2],
-      imageUrl: 'https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Aubergine-and-sesame-noodles-6138de6.jpg?quality=90&resize=556,505'
+      imageUrl: 'https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Aubergine-and-sesame-noodles-6138de6.jpg?quality=90&resize=556,505',
+      tags: ['meal', "fish", "bla", ",la,la", "popopoo", "ghghghg", "tag"]
     },
     {
       id: 2,
@@ -63,8 +64,9 @@ export const recipesList: IRecipe[] = [
       private: false,
       kkal: 805,
       ratings: [1, 5, 4],
-      isVegan: false,
-      imageUrl: 'https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FPhoto%2FRecipes%2F2023-01-Caramelized-Tomato-Paste-Pasta%2F06-CARAMELIZED-TOMATO-PASTE-PASTA-039'
+      isVegan: true,
+      imageUrl: 'https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FPhoto%2FRecipes%2F2023-01-Caramelized-Tomato-Paste-Pasta%2F06-CARAMELIZED-TOMATO-PASTE-PASTA-039',
+      tags: ['taggghghg']
     },
     {
       id: 5,
@@ -83,6 +85,24 @@ export const recipesList: IRecipe[] = [
       private: false,
       kkal: 763,
       ratings: [5, 1, 5, 3, 4, 4, 3, 4],
-    }
+    },
+    {
+        id: 6,
+        name: 'Very long name recipe Very long name recipe Very long name recipe Very long name recipe',
+        ingredients: [
+          { name: 'Rice', quantity: '300g' },
+          { name: 'Tomato', quantity: '250g' },
+          { name: 'Garlic', quantity: '30g' },
+          { name: 'Cheese', quantity: '200g' },
+          { name: 'Basil', quantity: '50g' }
+        ],
+        descriprion: "Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe Very long name recipe",
+        owner: 'test',
+        foodOccasions: FoodOccasions.Breakfast,
+        cuisine: 'Italian',
+        private: false,
+        kkal: 763,
+        ratings: [5, 5, 5, 3, 4, 4, 3, 4],
+      }
   ];
   

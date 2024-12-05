@@ -36,8 +36,9 @@ export interface IRecipe {
     cuisine?: string;
     private: boolean;
     kkal?: number;
-    ratings: number[];
+    ratings?: number[];
     isVegan?: boolean;
     imageUrl?: string;
+    tags?: string[];
     // comments?: string[];
 }

@@ -1,0 +1,6 @@
+<h1>Reaonle: {{readonly}}</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    @if(!readonly) {
+        <button mat-button type="submit">Save</button>
+    }
+</form>

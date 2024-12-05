@@ -1,0 +1,7 @@
+<recipe-form [readonly]="currentUser?.nickName !== recipe?.owner" (save)="editRecipe($event)"></recipe-form>
+<div>
+    {{recipe | json}}
+</div>
+<div>
+    {{currentUser | json}}
+</div>
