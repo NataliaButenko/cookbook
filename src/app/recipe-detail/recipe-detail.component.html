@@ -1,7 +1,10 @@
-<recipe-form [readonly]="currentUser?.nickName !== recipe?.owner" (save)="editRecipe($event)"></recipe-form>
-<div>
-    {{recipe | json}}
-</div>
-<div>
-    {{currentUser | json}}
-</div>
+@if(currentUser?.nickName === recipe?.owner) {
+    <h1 class="title">This is your recipe. You can change it.</h1>
+    <recipe-form [recipe]="recipe" [onSave]="saveRecipe"></recipe-form>
+} @else {
+    <h1 class="title">Bon appetit!</h1>
+    <div class="wrap">
+        <h3>{{recipe?.name}}</h3>
+        <p>{{recipe?.descriprion}}</p>
+    </div>
+}

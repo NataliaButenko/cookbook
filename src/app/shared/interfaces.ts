@@ -40,5 +40,4 @@ export interface IRecipe {
     isVegan?: boolean;
     imageUrl?: string;
     tags?: string[];
-    // comments?: string[];
 }

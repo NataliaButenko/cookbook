@@ -1,5 +1,5 @@
 import { Component, DestroyRef, OnInit } from '@angular/core';
-import { IRecipe, IUser } from '../shared/interfaces';
+import { FoodOccasions, IRecipe, IUser } from '../shared/interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { RecipesService } from '../services/recipes.service';
 import { CommonModule } from '@angular/common';
@@ -17,8 +17,9 @@ import { RecipeFormComponent } from '../components/recipe-form/recipe-form.compo
   styleUrl: './recipe-detail.component.scss'
 })
 export class RecipeDetailComponent implements OnInit {
-  public recipe: IRecipe | undefined;
+  public recipe?: IRecipe;
   public currentUser?: IUser;
+  public FoodOccasions = FoodOccasions;
 
   constructor(
     private authService: AuthService, 
@@ -31,6 +32,7 @@ export class RecipeDetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (id) {
       this.recipesService.getRecipeById$(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe((value) => {
+        console.log("value", value);
         this.recipe = value;
       });
     }
@@ -41,9 +43,9 @@ export class RecipeDetailComponent implements OnInit {
       }
     });
   }
-
-  editRecipe(recipe: IRecipe) {
-    console.log("editRecipe", recipe);
+  
+  saveRecipe(updatedRecipe: IRecipe) {
+    console.log('Сохранённый рецепт:', updatedRecipe);
   }
 
 }
